@@ -254,6 +254,15 @@ WinGet(Cmd = "", WinTitle = "", WinText = "", ExcludeTitle = "", ExcludeText = "
 	WinGet, v, %Cmd%, %WinTitle%, %WinText%, %ExcludeTitle%, %ExcludeText%
 	Return, v
 }
+WinGetList(WinTitle = "", WinText = "", ExcludeTitle = "", ExcludeText = "") {
+	local ; --
+	WinGet, v, List, %WinTitle%, %WinText%, %ExcludeTitle%, %ExcludeText%
+	a := []
+	a.SetCapacity(v)
+	Loop % v
+		a.Push(v%A_Index%)
+	Return, a
+}
 WinGetActiveTitle() {
 	local ; --
 	WinGetActiveTitle, v
